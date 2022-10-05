@@ -5,13 +5,13 @@ const { User } = require("../utils/schemas")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("deposit")
-    .setDescription("Deposit your wallet money to bank")
+    .setDescription("déposez une certaine somme d'argent dans votre compte bancaire")
     .addNumberOption(
         option => option
         .setName("amount")
-        .setDescription("Amount to deposit")
+        .setDescription("montant d'argent que vous souhaitez déposer **(montant minimum de 5$)**")
         .setRequired(true)
-        .setMinValue(100) //should be more than 100 coins
+        .setMinValue(5)
     ),
     run: async (interaction) => {
         const user = interaction.member.user,
@@ -19,10 +19,19 @@ module.exports = {
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
         embed = new EmbedBuilder()
 
+        if (amount < 5) return interaction.reply ({
+            embeds: [embed
+                .setDescription(`\` ${user} \` vous devez faire un dépot de minimum 5$**`)
+                .setColor(Colors.Red)
+                .setFooter({text: "\` 🏦 Pacific Bank 🏦 \`"})
+            ],
+        })
+
         if (userData.Cash < amount) return interaction.reply({
             embeds: [embed
-                .setDescription(`Vous ne possédez pas cette somme, il vous manquent \` ${amount - userData.Cash}$ \``)
-                .setColor(Colors.Orange)
+                .setDescription(`\` ${user} \` vous ne possédez pas cette somme, il vous manquent **${amount - userData.Cash}$**`)
+                .setColor(Colors.Red)
+                .setFooter({text: "\` 🏦 Pacific Bank 🏦 \`"})
             ],
         })
 
@@ -32,8 +41,9 @@ module.exports = {
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`✅ Vous avez déposez \` ${amount}$ \` dans votre compte en banque`)  
-                .setColor(Colors.Orange)
+                .setDescription(`✅ \` ${user} \` ${amount} ont été déposée dans votre compte`)  
+                .setColor(Colors.Green)
+                .setFooter({text: "\` 🏦 Pacific Bank 🏦 \`"})
             ],
         })
     }

@@ -1,21 +1,22 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-const { EmbedBuilder, Colors } = require("discord.js")
+const { EmbedBuilder, Colors, PermissionsBitFields, Message, GatewayIntentBits } = require("discord.js")
 const { User } = require("../utils/schemas")
 
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("add-money")
-    .setDescription("ajouter un montant d'argent à un utilisateur (administateur seulement)")
+    .setDescription("ajoute un certain montant d'argent à un utilisateur **(administateur seulement)**")
+    .setDMPermission(false)
     .addUserOption(
         option => option
         .setName("user")
-        .setDescription("La personne à qui vous voulez ajouter de l'argent")
+        .setDescription("utilisateur à qui vous voulez ajouter de l'argent")
         .setRequired(true)
     )
     .addNumberOption(
         option => option
         .setName("amount")
-        .setDescription("montant à ajouter à l'utilisateur")
+        .setDescription("montant d'argent à ajouter au compte bancaire de l'utilisateur")
         .setRequired(true)
         .setMinValue(1)
     ),
@@ -29,9 +30,11 @@ module.exports = {
         userData.Cash += amount
         userData.save()
 
+        interaction.get
+
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`${user} à donner \` ${amount}$ \` à ${target}`)  
+                .setDescription(`Le membre du staff \` ${user} \` à donner **${amount}$** à \` ${target} \``)  
                 .setColor(Colors.Orange)
             ],
         })

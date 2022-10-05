@@ -5,11 +5,11 @@ const { User } = require("../utils/schemas")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("reset-money")
-    .setDescription("Reset le compte en banque d'un utilisateur (administateur seulement)")
+    .setDescription("reset le compte bancaire d'un utilisateur au montant par défaut **(administateur seulement)**")
     .addUserOption(
         option => option
         .setName("user")
-        .setDescription("La personne a qui vous voulez reset l'argent")
+        .setDescription("utilisateur à qui vous voulez reset le compte bancaire")
         .setRequired(true)
     ),
     run: async (interaction) => {
@@ -19,13 +19,13 @@ module.exports = {
         embed = new EmbedBuilder()
 
         userData.Cash = 0
-        userData.Banque = 0
+        userData.Banque = 10000
         userData.save()
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`${user} à remis la balance de ${target} a 0`)  
-                .setColor(Colors.Orange)
+                .setDescription(`\` ${user} \` à reset le compte bancaire de \` ${target} \` au montant par défaut`)  
+                .setColor(Colors.Green)
             ],
         })
     }

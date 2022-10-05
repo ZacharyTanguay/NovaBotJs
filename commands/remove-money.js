@@ -5,17 +5,17 @@ const { User } = require("../utils/schemas")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("remove-money")
-    .setDescription("ajouter un montant d'argent à un utilisateur (administateur seulement)")
+    .setDescription("retire un certain montant d'argent à un utilisateur **(administateur seulement)**")
     .addUserOption(
         option => option
         .setName("user")
-        .setDescription("La personne à qui vous voulez ajouter de l'argent")
+        .setDescription("utilisateur à qui vous voulez retirer de l'argent")
         .setRequired(true)
     )
     .addNumberOption(
         option => option
         .setName("amount")
-        .setDescription("montant à ajouter à l'utilisateur")
+        .setDescription("montant d'argent retirer du compte bancaire de l'utilisateur **(montant minimum de 1$)**")
         .setRequired(true)
         .setMinValue(1)
     ),
@@ -26,14 +26,20 @@ module.exports = {
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
         embed = new EmbedBuilder()
 
+        if (amount < 1) return interaction.reply({
+            embeds: [embed
+                .setDescription(`\` ${user} \` le montant saisi n'est pas valide`)  
+                .setColor(Colors.Red)
+            ],
+        })
 
         userData.Cash -= amount
         userData.save()
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`${user} à retirer \` ${amount}$ \` à ${target}`)  
-                .setColor(Colors.Orange)
+                .setDescription(`\` ${user} \` à retirer **${amount}$** à \` ${target} \``)  
+                .setColor(Colors.Green)
             ],
         })
     }
