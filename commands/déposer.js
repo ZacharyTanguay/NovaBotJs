@@ -2,9 +2,14 @@ const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors } = require("discord.js")
 const { User } = require("../utils/schemas")
 
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("deposit")
+    .setName("déposer")
     .setDescription("déposez une certaine somme d'argent dans votre compte bancaire")
     .addNumberOption(
         option => option
@@ -18,33 +23,34 @@ module.exports = {
         amount = interaction.options.getNumber("amount")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
         embed = new EmbedBuilder()
-
+        
         if (amount < 5) return interaction.reply ({
             embeds: [embed
-                .setDescription(`\` ${user} \` vous devez faire un retrait de minimum 5$**`)
+                .setDescription(`❌ \` ${user.username} \` vous devez faire un dépot de minimum **${formatter.format(5)}**`)
                 .setColor(Colors.Red)
-                .setFooter({text: "\` 🏦 Pacific Bank 🏦 \`"})
+                .setFooter({text: "🏦 Pacific Bank 🏦"})
             ],
         })
+        const amountInCash = amount - userData.Banque
 
-        if (userData.Banque < amount) return interaction.reply({
+        if (userData.Cash < amount) return interaction.reply({
             embeds: [embed
-                .setDescription(`\` ${user} \` vous ne possédez pas cette somme, il vous manquent **${amount - userData.Banques}$**`)
+                .setDescription(`❌ \` ${user.username} \` vous ne possédez pas cette somme, il vous manquent **${formatter.format(amountInCash)}$**`)
                 .setColor(Colors.Red)
-                .setFooter({text: "\` 🏦 Pacific Bank 🏦 \`"})
+                .setFooter({text: "🏦 Pacific Bank 🏦"})
             ],
         })
 
-        userData.Banque -= amount
-        userData.Cash += amount
+        userData.Cash -= amount
+        userData.Banque += amount
         userData.save()
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`✅ \` ${user} \` ${amount} ont été retirée de votre compte`)  
+                .setDescription(`✅ \` ${user.username} \` **${formatter.format(amount)}** ont été déposée dans votre compte`)  
                 .setColor(Colors.Green)
-                .setFooter({text: "\` 🏦 Pacific Bank 🏦 \`"})
+                .setFooter({text: "🏦 Pacific Bank 🏦"})
             ],
         })
     }
-}s
+}

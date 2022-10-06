@@ -16,15 +16,16 @@ module.exports = {
         const user = interaction.member.user
         const target = interaction.options.getUser("user")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
+        targetData = await User.findOne({ id: target.id }) || new User({ id: target.id })
         embed = new EmbedBuilder()
 
-        userData.Cash = 0
-        userData.Banque = 10000
-        userData.save()
+        targetData.Cash = 0
+        targetData.Banque = 10000
+        targetData.save()
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`\` ${user} \` à reset le compte bancaire de \` ${target} \` au montant par défaut`)  
+                .setDescription(`✅ \` ${user.username} \` à reset le compte bancaire de \` ${target.username} \` au montant par défaut`)  
                 .setColor(Colors.Green)
             ],
         })
