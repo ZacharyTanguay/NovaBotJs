@@ -1,4 +1,4 @@
-﻿const { Client, Intents, Collection, GatewayIntentBits } = require('discord.js');
+﻿const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { bot_token, mongo_url } = require('./config.json');
 const { readdirSync } = require('fs');
 
@@ -13,7 +13,7 @@ const client = new Client({
   ],
 });
 
-/* Commands and Events handler */
+
 client.commands = new Collection(readdirSync('./commands').map(cmd => [cmd.split('.')[0], require(`./commands/${cmd}`)]));
 for (const event of readdirSync("./events")) client.on(event.split(".")[0], require(`./events/${event}`).bind(null))
 

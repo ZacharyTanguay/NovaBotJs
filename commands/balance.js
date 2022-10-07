@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
-const { User } = require("../utils/schemas")
+const { User } = require("../utils/economy")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',

@@ -6,5 +6,4 @@ const User = new mongoose.Schema({
     Banque: { type: Number, default: 0 },
     Crypto: { type: Number, default: 0 },
 })
-
 module.exports = { User: mongoose.model("User", User) }
