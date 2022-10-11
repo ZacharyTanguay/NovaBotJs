@@ -1,6 +1,10 @@
-﻿const { Client, Collection, GatewayIntentBits } = require('discord.js');
+﻿const fs = require('node:fs');
+const path = require('node:path');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { bot_token, mongo_url } = require('./config.json');
-const { readdirSync } = require('fs');
+
+const {loadEvents} = require("./Handlers/eventHandler");
+const {loadCommands} = require("./Handlers/commandHandler");
 
 const mongoose = require('mongoose');
 const client = new Client({
@@ -13,9 +17,14 @@ const client = new Client({
   ],
 });
 
-
-client.commands = new Collection(readdirSync('./commands').map(cmd => [cmd.split('.')[0], require(`./commands/${cmd}`)]));
-for (const event of readdirSync("./events")) client.on(event.split(".")[0], require(`./events/${event}`).bind(null))
+client.commands = new Collection();
+client.events = new Collection();
 
 /* Discord Bot and MongoDB connection */
-client.login(bot_token).then(() => mongoose.connect(mongo_url));
+client.login(bot_token)
+.then(() => {
+	loadCommands(client);
+	loadEvents(client);
+	mongoose.connect(mongo_url)
+})
+.catch((err) => console.log(err));

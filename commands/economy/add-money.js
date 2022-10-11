@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors, PermissionsBitFields, Message, GatewayIntentBits } = require("discord.js")
-const { User } = require("../utils/economy")
+const { User } = require("C:/NovaBotJs/utils/economy.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,7 +15,7 @@ module.exports = {
     )
     .addNumberOption(
         option => option
-        .setName("amount")
+        .setName("montant")
         .setDescription("montant d'argent à ajouter au compte bancaire de l'utilisateur")
         .setRequired(true)
         .setMinValue(1)
@@ -23,15 +23,13 @@ module.exports = {
     run: async (interaction) => {
         const user = interaction.member.user
         const target = interaction.options.getUser("user")
-        amount = interaction.options.getNumber("amount")
+        amount = interaction.options.getNumber("montant")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
         targetData = await User.findOne({ id: target.id }) || new User({ id: target.id })
         embed = new EmbedBuilder()
 
         targetData.Cash += amount
         targetData.save()
-
-        interaction.get
 
         return interaction.reply({
             embeds: [ embed

@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors } = require("discord.js")
-const { User } = require("../utils/economy")
+const { User } = require("C:/NovaBotJs/utils/economy.js")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -13,14 +13,14 @@ module.exports = {
     .setDescription("déposez une certaine somme d'argent dans votre compte bancaire")
     .addNumberOption(
         option => option
-        .setName("amount")
+        .setName("montant")
         .setDescription("montant d'argent que vous souhaitez déposer **(montant minimum de 5$)**")
         .setRequired(true)
         .setMinValue(5)
     ),
     run: async (interaction) => {
         const user = interaction.member.user,
-        amount = interaction.options.getNumber("amount")
+        amount = interaction.options.getNumber("montant")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
         embed = new EmbedBuilder()
         

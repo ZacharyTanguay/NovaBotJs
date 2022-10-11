@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors } = require("discord.js")
-const { User } = require("../utils/economy")
+const { User } = require("C:/NovaBotJs/utils/economy.js")
 
 module.exports = {
     data: new SlashCommandBuilder()

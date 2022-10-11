@@ -2,5 +2,6 @@
     "bot_token": "MTAxODk0NTkxOTk5NzE5ODM1Ng.GVLBD6.0BCJ0UZ0RpC3Walv6r4fxjNPZko_7qO4lBemms",
     "mongo_url": "mongodb+srv://Zack:GIi2AznxFBXljFYB@novabotdb.xflkfab.mongodb.net/?retryWrites=true&w=majority",
     "client_id": "1018945919997198356",
-    "guild_id": "1021430607286390967"
+    "guild_id": "1021430607286390967",
+    "prefix": "!"
 }
