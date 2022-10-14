@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
-const { User } = require("C:/NovaBotJs/utils/economy.js")
+const { User } = require("../../utils/schema.js")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -24,11 +24,11 @@ module.exports = {
 
         const balanceEmbed = new EmbedBuilder ()
         .setAuthor({name: user.tag, iconURL: user.displayAvatarURL()})
-        .setColor("#E67E22")
+        .setColor("#cfb35f")
         .setThumbnail(`https://static.wikia.nocookie.net/gtawiki/images/0/08/PacificStandardBank-GTAV-Logo.png/revision/latest?cb=20160921165509`)
         .addFields(
             { name: "💵 \` | ESPÈCE \`" ,value: ` ${formatter.format(userData.Cash)} ` },
-            { name: "💳 \` | CRÉDIT \`", value: ` ${formatter.format(userData.Banque)} `},
+            { name: "💳 \` | BANQUE \`", value: ` ${formatter.format(userData.Banque)} `},
             { name: "💰 \` | TOTAL \`", value: ` ${formatter.format(userData.Cash + userData.Banque)} `},
         )
         .setTimestamp()

@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors, ButtonStyle, ButtonBuilder, ActionRowBuilder, ComponentType } = require("discord.js")
-const { User } = require("C:/NovaBotJs/utils/economy.js")
+const { User } = require("C:/NovaBotJs/utils/schema.js")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -14,7 +14,7 @@ module.exports = {
     .addUserOption(
         option => option
         .setName("user")
-        .setDescription("utilisateur à qui vous voulez ajouter de l'argent")
+        .setDescription("utilisateur à qui vous voulez envoyer")
         .setRequired(true)
     )
     .addNumberOption(

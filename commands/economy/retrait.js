@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors } = require("discord.js")
-const { User } = require("C:/NovaBotJs/utils/economy.js")
+const { User } = require("C:/NovaBotJs/utils/schema.js")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -32,13 +32,13 @@ module.exports = {
             ],
         })
 
-        const amountInBank = amount - userData.Banque
+        const amountInBank = userData.Banque - amount
 
         if (userData.Banque < amount) return interaction.reply({
             embeds: [embed
-                .setDescription(`❌ \` ${user.username} \` vous ne possédez pas cette somme, il vous manquent **${formatter.format(amountInBank)}$**`)
-                .setColor(Colors.Red)
-                .setFooter({text: "🏦 Pacific Bank 🏦"})
+                .setDescription(`\` ${userData.prénom + " " + userData.nom}  \` vous ne possédez pas cette somme, il vous manquent **${formatter.format(amountInBank)}$**`)
+                .setColor(Colors.DarkRed)
+                .setFooter({text: "❌ - Transaction annulée"})
             ],
         })
 
@@ -48,9 +48,9 @@ module.exports = {
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`✅ \` ${user.username} \` **${formatter.format(amount)}** ont été retirée de votre compte`)  
-                .setColor(Colors.Green)
-                .setFooter({text: "🏦 Pacific Bank 🏦"})
+                .setDescription(`\` ${userData.prénom + " " + userData.nom} \` **${formatter.format(amount)}** ont été retirée de votre compte`)  
+                .setColor(Colors.DarkGreen)
+                .setFooter({text: "✅ - Transaction réussie"})
             ],
         })
     }

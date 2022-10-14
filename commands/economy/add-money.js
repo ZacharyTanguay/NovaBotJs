@@ -1,6 +1,11 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors, PermissionsBitFields, Message, GatewayIntentBits } = require("discord.js")
-const { User } = require("C:/NovaBotJs/utils/economy.js")
+const { User } = require("C:/NovaBotJs/utils/schema.js")
+
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -33,7 +38,7 @@ module.exports = {
 
         return interaction.reply({
             embeds: [ embed
-                .setDescription(`✅ Le membre du staff \` ${user.username} \` à donner **${amount}$** à \` ${target.username} \``)  
+                .setDescription(`✅ Le membre du staff \` ${user.username} \` à donner **${formatter.format(amount)}$** à \` ${target.username} \``)  
                 .setColor(Colors.Green)
             ],
         })
