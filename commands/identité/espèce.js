@@ -27,7 +27,7 @@ module.exports = {
             const context = canvas.getContext('2d');
         
             // Declare a base size of the font
-            let fontSize = 44;
+            let fontSize = 50;
         
             do {
                 context.font = `${fontSize -= 10}px sans-serif`;
@@ -38,12 +38,12 @@ module.exports = {
 
         const canvas = Canvas.createCanvas(798, 522);
 		const context = canvas.getContext('2d');
-        const background = await Canvas.loadImage('C:/NovaBotJs/images/cash1.png');
+        const background = await Canvas.loadImage('C:/NovaBotJs/images/money.png');
         context.drawImage(background, 0, 0 , canvas.width, canvas.height);
         
         context.font = applyText(canvas, `${formatter.format(userData.banque)}`);
         context.fillStyle = '#000000';
-        //context.fillText(formatter.format(userData.Cash), 320, 180); cash3.png
+        context.fillText(formatter.format(userData.Cash), 305, 400);
         
         
         const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'profile-image.png' });

@@ -10,8 +10,6 @@ module.exports = {
   async execute (interaction, client) {
     if (!interaction.isChatInputCommand()) return;
 
-    if (interaction.isButton()) return;
-
     const command = client.commands.get(interaction.commandName);
 
     if (!command) {

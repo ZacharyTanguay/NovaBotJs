@@ -25,6 +25,8 @@
     "discord.js": "^14.5.0",
     "fs": "^0.0.1-security",
     "mongoose": "^6.6.4",
+    "nanoid": "^4.0.0",
+    "random-id-generator": "^0.0.2",
     "stack": "^0.1.0",
     "typescript": "^4.8.4",
     "undici": "^5.11.0",

@@ -19,7 +19,8 @@ module.exports = {
             option => option
             .setName("montant")
             .setDescription("utilisateur dont les informations doivent être créer")
-            .addChoices(
+            .setRequired(true)
+            /*.addChoices(
                 { name: formatter.format(100000), value: 100000 },
                 { name: formatter.format(50000), value: 50000 },
                 { name: formatter.format(10000), value: 10000 },
@@ -27,7 +28,7 @@ module.exports = {
                 { name: formatter.format(1000), value: 1000 },
                 { name: formatter.format(250), value: 250 },
                 )
-            .setRequired(true)
+                */
         )
     )
     .addSubcommand(subcommand =>
@@ -37,7 +38,7 @@ module.exports = {
     ),
     run: async (interaction) => {
         const user = interaction.member.user,
-        amount = interaction.options.getNumber("montant")
+        amount = interaction.options.getNumber("espèces"),
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),
         embed = new EmbedBuilder()
         

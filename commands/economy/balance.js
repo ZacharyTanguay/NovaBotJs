@@ -1,6 +1,8 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
 const { User } = require("../../utils/schema.js")
+const { moneyFormat } = require("../../handlers/functions.js")
+const embed = require("../../config/embed.json")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -24,12 +26,12 @@ module.exports = {
 
         const balanceEmbed = new EmbedBuilder ()
         .setAuthor({name: user.tag, iconURL: user.displayAvatarURL()})
-        .setColor("#cfb35f")
+        .setColor(embed.serveur)
         .setThumbnail(`https://static.wikia.nocookie.net/gtawiki/images/0/08/PacificStandardBank-GTAV-Logo.png/revision/latest?cb=20160921165509`)
         .addFields(
-            { name: "💵 \` | ESPÈCE \`" ,value: ` ${formatter.format(userData.Cash)} ` },
-            { name: "💳 \` | BANQUE \`", value: ` ${formatter.format(userData.Banque)} `},
-            { name: "💰 \` | TOTAL \`", value: ` ${formatter.format(userData.Cash + userData.Banque)} `},
+            { name: "💵 \` | ESPÈCE \`" ,value: ` ${moneyFormat(userData.Cash)} ` },
+            { name: "💳 \` | BANQUE \`", value: ` ${moneyFormat(userData.Banque)} `},
+            { name: "💰 \` | TOTAL \`", value: ` ${moneyFormat(userData.Banque + userData.Cash)} `},
         )
         .setTimestamp()
         .setFooter({text: "🏦 Pacific Bank 🏦"})
