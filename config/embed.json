@@ -3,5 +3,11 @@
     "avertissement": "#FFFF00",
     "accepter": "#1F8B4C",
     "refuser": "992D22",
-    "mauvais": "#ED4245"
+    "mauvais": "#ED4245",
+    "point": "•",
+    "non_autoriser": "⚠️ • Actions non autorisées ",
+    "accepterTxt": "✅ • ",
+    "refuserTxt": "❌ • ",
+    "transactionAccepter": "✅ • Transaction réussie ",
+    "transactionRefuser": "❌ • Transaction échouée "
 }

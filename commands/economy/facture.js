@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors, ButtonStyle, ButtonBuilder, ActionRowBuilder } = require("discord.js")
-const { User } = require("C:/NovaBotJs/utils/schema.js")
+const { User } = require("../../models/userSchema.js")
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',

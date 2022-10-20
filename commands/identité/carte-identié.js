@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder, Embed } = require("discord.js")
-const { User } = require("../../utils/schema.js")
+const { User } = require("../../models/userSchema.js")
 const Canvas = require('@napi-rs/canvas');
 const { request } = require('undici');
 

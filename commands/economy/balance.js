@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
-const { User } = require("../../utils/schema.js")
+const { User } = require("../../models/userSchema.js")
 const { moneyFormat } = require("../../handlers/functions.js")
 const embed = require("../../config/embed.json")
 
