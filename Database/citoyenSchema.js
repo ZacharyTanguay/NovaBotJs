@@ -16,21 +16,25 @@ const Citoyen = new mongoose.Schema({
 
     vrai_id: [
         new Schema({
-            vrai_nom: { type: String, default: "Non rempli" },
-            vrai_prenom: { type: String, default: "Non rempli" },
-            vrai_age: { type: String, default: "Non rempli" },
-            vrai_sexe: { type: String, default: "Non rempli" },
-            vrai_naissance: { type: String, default: "Non rempli" },
-            vrai_nationalite: { type: String, default: "Non rempli" },
+            nom: { type: String, default: "" },
+            prenom: { type: String, default: "" },
+            age: { type: String, default: "" },
+            sexe: { type: String, default: "" },
+            naissance: { type: String, default: "" },
+            nationalite: { type: String, default: "" },
         }, {_id: false})
     ],
-
-    faux_nom: { type: String, default: "Non rempli" },
-    faux_prenom: { type: String, default: "Non rempli" },
-    faux_age: { type: String, default: "Non rempli" },
-    faux_sexe: { type: String, default: "Non rempli" },
-    faux_naissance: { type: String, default: "Non rempli" },
-    faux_nationalite: { type: String, default: "Non rempli" },
+    
+    faux_id: [
+        new Schema({
+            nom: { type: String, default: "" },
+            prenom: { type: String, default: "" },
+            age: { type: String, default: "" },
+            sexe: { type: String, default: "" },
+            naissance: { type: String, default: "" },
+            nationalite: { type: String, default: "" },
+        }, {_id: false})
+    ],
     
     permis_conduire_voiture: { type: String, default: msg.permis_deny_emoji },
     permis_conduire_moto: { type: String, default: msg.permis_deny_emoji },
