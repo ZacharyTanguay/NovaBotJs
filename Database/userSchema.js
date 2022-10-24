@@ -9,9 +9,4 @@ const User = new mongoose.Schema({
     user_sexe: { type: String, default: "Anonyme" },
     user_discord: { type: String, default: "Anonyme" },
     user_gamertag: { type: String, default: "Anonyme" },
-
-    carte_identite_vrai: { type: Boolean, default: false },
-    carte_identite_fausse: { type: Boolean, default: false },
-    compte_bancaire: { type: Boolean, default: false },
-    entreprise: { type: Boolean, default: false },
 })
