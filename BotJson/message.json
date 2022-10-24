@@ -1,0 +1,22 @@
+{
+    "server_Color" : "#cfb35f",
+    "valid_Color": "#1F8B4C",
+    "deny_Color": "992D22",
+    "warning_Color": "#FFFF00",
+    "error_Color": "#ED4245",
+
+    "valid_Emoji" : "<:validation:1033078689824510053>",
+    "deny_Emoji" : "<:error:1033909693720055898>",
+    "warning_Emoji" : "⚠️",
+
+    "point_petit_Char":"• ",
+    "point_grand_Char":"● ",
+    "point_vide_Char":"○ ",
+    "carré_petit_Char":"▪︎ ",
+    "carré_grand_Char":"■ ",
+    "carré_vide_Char":"□ ",
+    "etoile_Char":"☆ ",
+    "losange_Char":"◇ ",
+    "viseur_Char":"¤ ",
+    "degré_Char":"° "
+}
