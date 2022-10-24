@@ -14,7 +14,7 @@ const Entreprise = new mongoose.Schema({
     
     patron_id: { type: String, default: "Aucun" },
     
-    couleur: { type: String, default: msg. },
+    couleur: { type: String, default: msg.server_Color },
     
     logo: { type: String, default: "Aucun" },
     
@@ -40,20 +40,36 @@ const Entreprise = new mongoose.Schema({
     
     pret: { type: Number, default: 0 },
     
+    actionnaires: [
+        new Schema({
+            actionnaire_nom: { type: String, default: "" },
+            actionnaire_id: { type: String, default: "" },
+            actionnaire_part: { type: Number, default: 0 },
+        },{ _id: false })
+    ],
+                                       
+    postes: [
+        new Schema({
+            poste_nom: { type: String, default: "" },
+            poste_salaire: { type: Number, default: 0 },
+        },{ _id: false })
+    ],                               
+    
+    employers: [
+        new Schema({
+            employer_nom: { type: String, default: "" },
+            employer_id: { type: String, default: "" },
+            employer_poste: { type: String, default: "" },
+            employer_salaire: { type: Number, default: 0 },
+        },{ _id: false })
+    ],
+    
     financeurs: [
-        {
+        new Schema({
             financeur_nom: { type: String, default: "Anonyme" },
             financeur_id: { type: String, default: "" },
             montant: { type: Number, default: 0 },
-        }
-    ],
-    
-    actionnaires: [
-        {
-            actionnaire_nom: { type: String, default: "Aucun" },
-            actionnaire_id: { type: String, default: "Aucun" },
-            actionnaire_part: { type: Number, default: 0 },
-        }
+        },{ _id: false })
     ],
         
 })
