@@ -1,10 +1,9 @@
 ﻿const { Client, Collection, GatewayIntentBits } = require('discord.js');
-const { bot_token, mongo_url } = require('./config.json');
-const {loadEvents} = require("./handlers/eventHandler");
-const {loadCommands} = require("./handlers/commandHandler");
-
+const { token, mongodb_url } = require('C:/NovaBotJs/BotJson/config.json');
+const { loadEvents } = require("./Handlers/eventHandler");
+const { loadCommands } = require("./Handlers/commandHandler");
 const mongoose = require('mongoose');
-const { loadButtons } = require('./events/interactions/interactionCreate');
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -18,10 +17,10 @@ const client = new Client({
 client.commands = new Collection();
 client.events = new Collection();
 
-client.login(bot_token)
+client.login(token)
 .then(() => {
 	loadCommands(client);
 	loadEvents(client);
-	mongoose.connect(mongo_url)
+	mongoose.connect(mongodb_url)
 })
 .catch((err) => console.log(err));
