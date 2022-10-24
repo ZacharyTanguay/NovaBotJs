@@ -8,6 +8,6 @@ module.exports = {
    * @param {Client} client
    */
   execute(client) {
-    console.log(`${client.user.username} booted up.`);
+    console.log(`${client.user.username} est en ligne.`);
   },
 };

@@ -13,7 +13,7 @@ module.exports = {
     const command = client.commands.get(interaction.commandName);
 
     if (!command) {
-      interaction.reply({content: "Outdated command"});
+      interaction.reply({content: "La commande suivante n'est plus valide." , ephemeral: true});
     }
 
     command.run(interaction, client);
