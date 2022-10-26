@@ -4,7 +4,7 @@ const msg = require("C:/NovaBotJs/BotJson/message.json")
 
 const Entreprise = new mongoose.Schema({
     
-    date_creation: { type: String, default: Date.now },
+    createdAt: { type: Date, default: new Date() },
         
     nom: { type: String, default: "Empty", required: true},
     
