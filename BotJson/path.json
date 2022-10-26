@@ -1,7 +1,0 @@
-{
-  "repo_Path" : "C:/NovaBotJs/",
-  "userSchema_Path" : "Database/userSchema.js",
-  "citoyenSchema_Path" : "Database/citoyenSchema.js",
-  "entrepriseSchema_Path" : "Database/entrepriseSchema.js",
-  "statsSchema_Path" : "Database/statsSchema.js"
-}
