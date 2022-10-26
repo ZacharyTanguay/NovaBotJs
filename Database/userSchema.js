@@ -18,7 +18,7 @@ const User = new mongoose.Schema({
            warning: { type: String, default: "" },
            raison: { type: String, default:  "" },
            gravité: { type: Number, default: 0 },
-           moderateur: { type: String, default "@Staff" },
+           moderateur: { type: String, default: "@Staff" },
         }
     ],
 })
