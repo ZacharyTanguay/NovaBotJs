@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 const msg = require("C:/NovaBotJs/BotJson/message.json")
 
 const User = new mongoose.Schema({
+    createdAt: { type: String, default: Date.now() },
     user_id: { type: String, unique: true, required: true },
     user_tag: { type: String, default: "Anonyme" },
     user_nom: { type: String, default: "Anonyme" },
@@ -12,6 +13,7 @@ const User = new mongoose.Schema({
     
     user_warn: [
         {
+           date: { type: String, default: Date.now() },
            tag : { type: String, default: "" },
            warning: { type: String, default: "" },
            raison: { type: String, default:  "" },
