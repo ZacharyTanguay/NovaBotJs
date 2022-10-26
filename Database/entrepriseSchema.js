@@ -40,6 +40,10 @@ const Entreprise = new mongoose.Schema({
     
     pret: { type: Number, default: 0 },
     
+    employer_nb: { type: Number,  default: 0 },
+    
+    employer_nbMax: { type: Number, default: 0 },
+    
     actionnaires: [
         {
             actionnaire_nom: { type: String, default: "" },
