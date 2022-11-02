@@ -2,16 +2,15 @@ const mongoose = require("mongoose")
 const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json")
 
 const User = new mongoose.Schema({
-    createdAt: { type: String, default: new Date() },
-    user_id: { type: String, unique: true, required: true },
-    user_tag: { type: String, default: "Anonyme" },
-    user_nom: { type: String, default: "Anonyme" },
-    user_prenom: { type: String, default: "Anonyme" },
-    user_age: { type: String, default: "Anonyme" },
-    user_sexe: { type: String, default: "Anonyme" },
-    user_gamertag: { type: String, default: "Anonyme" },
+    joinedAt: { type: Date, default: "" },
+    id: { type: String, unique: true, required: true },
+    username: { type: String, default: "" },
+    prenom: { type: String, default: "Inconnu" },
+    age: { type: String, default: "Inconnu" },
+    sexe: { type: String, default: "Inconnu" },
+    gamertag: { type: String, default: "Inconnu" },
     
-    user_warn: [
+    warn: [
         {
            date: { type: String, default: new Date() },
            tag : { type: String, default: "" },

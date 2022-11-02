@@ -5,6 +5,7 @@
     "color_warning": "#FFFF00",
     "color_error": "#ED4245",
 
+    "emoji_server": "<:logo:1037475703991578745> ",
     "emoji_valid" : "<:validation:1033078689824510053> ",
     "emoji_deny" : "<:error:1033909693720055898> ",
     "emoji_warning" : "⚠️ ",
