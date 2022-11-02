@@ -4,6 +4,6 @@
     "client_id": "1031615812542410772",
     "client_secret": "SbKCLM5dIefc-IBWUuG2wCEwVES4-n-Y",
     "application_id": "1031615812542410772",
-    "public_key":"f76bd5c3bde9983f6c0cf2056870d11857caef826209e08d24e659e683cf8ea0",
+    "public_key": "f76bd5c3bde9983f6c0cf2056870d11857caef826209e08d24e659e683cf8ea0",
     "mongodb_url": "mongodb+srv://Zack:GIi2AznxFBXljFYB@novabotdb.xflkfab.mongodb.net/NovaFive_db"
 }
