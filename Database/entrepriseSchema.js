@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
-
-const msg = require("C:/NovaBotJs/BotJson/message.json")
+const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json")
 
 const Entreprise = new mongoose.Schema({
     
@@ -14,7 +13,7 @@ const Entreprise = new mongoose.Schema({
     
     patron_id: { type: String, default: "Aucun" },
     
-    couleur: { type: String, default: msg.server_Color },
+    couleur: { type: String, default: myVar.color_server },
     
     logo: { type: String, default: "Aucun" },
     

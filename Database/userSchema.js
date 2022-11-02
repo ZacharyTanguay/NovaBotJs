@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const msg = require("C:/NovaBotJs/BotJson/message.json")
+const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json")
 
 const User = new mongoose.Schema({
     createdAt: { type: String, default: new Date() },
@@ -22,3 +22,4 @@ const User = new mongoose.Schema({
         }
     ],
 })
+module.exports = { User: mongoose.model("User", User) }

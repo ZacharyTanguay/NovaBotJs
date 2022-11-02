@@ -1,5 +1,5 @@
 const {CommandInteraction, ButtonStyle, ButtonBuilder, ActionRowBuilder} = require("discord.js");
-const { User } = require("../../models/userSchema.js")
+const { User } = require("/workspace/NovaBotJs/Database/userSchema.js")
 
 module.exports = {
   name: "interactionCreate",

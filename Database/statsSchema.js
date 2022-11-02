@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
-const msg = require("C:/NovaBotJs/BotJson/message.json")
-const { moneyFormat } = require("C:/NovaBotJs/Handlers/functions.js")
+const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json")
+
+const { moneyFormat } = require("./Handlers/functions.js")
 
 const Statistiques = new mongoose.Schema({
     stats_nbUser: { type: Number, default : 0 },

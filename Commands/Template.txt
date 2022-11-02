@@ -1,6 +1,0 @@
-const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder, Embed } = require('discord.js')
-const { SlashCommandBuilder } = require('@discordjs/builders')
-const myVar = require('BotJson/myVar.json')
-const User = require('Database/userSchema.js')
-const Citoyen = require('Database/citoyenSchema.js')
-const Entreprise = require('Database/entrepriseSchema.js')

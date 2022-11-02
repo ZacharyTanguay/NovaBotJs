@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const msg = require("C:/NovaBotJs/BotJson/message.json")
+const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json")
 
 const Citoyen = new mongoose.Schema({
     user_id: { type: String, unique: true, required: true },
@@ -36,9 +36,9 @@ const Citoyen = new mongoose.Schema({
         }
     ],
     
-    permis_conduire_voiture: { type: String, default: msg.permis_deny_emoji },
-    permis_conduire_moto: { type: String, default: msg.permis_deny_emoji },
-    permis_conduire_camion: { type: String, default: msg.permis_deny_emoji },
-    permis_conduire_avion: { type: String, default: msg.permis_deny_emoji },
-    permis_conduire_bateau: { type: String, default: msg.permis_deny_emoji },
+    permis_conduire_voiture: { type: String, default: myVar.permis_deny_emoji },
+    permis_conduire_moto: { type: String, default: myVar.permis_deny_emoji },
+    permis_conduire_camion: { type: String, default: myVar.permis_deny_emoji },
+    permis_conduire_avion: { type: String, default: myVar.permis_deny_emoji },
+    permis_conduire_bateau: { type: String, default: myVar.permis_deny_emoji },
 })
