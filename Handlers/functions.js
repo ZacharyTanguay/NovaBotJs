@@ -5,7 +5,7 @@ module.exports = {
 function moneyFormat ( number ) {
     var formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'null',
         minimumFractionDigits: 3,
         minimumSignificantDigits: 3,
       });
