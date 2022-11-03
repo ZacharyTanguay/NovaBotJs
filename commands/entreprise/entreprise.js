@@ -1,9 +1,10 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder, TimestampStyles } = require("@discordjs/builders")
 const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder, Embed } = require("discord.js")
 const { User } = require("C:/NovaBotJs/models/userSchema.js")
 const { Entreprise} = require("C:/NovaBotJs/models/entrepriseSchema.js")
 const conf = require("C:/NovaBotJs/config/embed.json")
 const { v4: uuidv4 } = require('uuid');
+const moment = require('moment');
 
 uuidv4();
 
@@ -102,11 +103,6 @@ module.exports = {
         subcommand
         .setName("afficher")
         .setDescription("Affiche les informations d'une entreprise")
-    )
-    .addSubcommand(subcommand =>
-        subcommand
-        .setName("info")
-        .setDescription("Affiche les informations d'une entreprise")
         .addStringOption(
             option => option
             .setName("nom")
@@ -120,19 +116,27 @@ module.exports = {
         .setDescription("Affiche la liste des entreprises")
     ),
     run: async (interaction) => {
-        const filter = {}
-        const user = await User.find(filter)
-        const entreprise = interaction.options.getString("nom")
-        const entrepriseData = await Entreprise.findOne({ id: entreprise.id }) || new Entreprise({ id: entreprise.id })
-
+        const user = interaction.member.user
+        userData = await User.findOne({ id: user.id }) || new User({ id: user.id })
+        
         if (interaction.options.getSubcommand() === "créer") {
-            entrepriseData.id = interaction.options.getString("nom")
-            entrepriseData.nom = interaction.options.getString("nom")
-            entrepriseData.type = interaction.options.getString("type")
-            entrepriseData.nombreDeSalariéMaximum = interaction.options.getString("nombre-de-salarié-maximum")
-            entrepriseData.couleur = interaction.options.getString("couleur")
-            entrepriseData.logo = interaction.options.getString("logo")
-            
+            if (await Entreprise.findOne({ nom: interaction.options.getString("nom") })) {
+                const existeEmbed = new EmbedBuilder()
+                .setDescription(`${userData.prénom} + Cette entreprise existe déjà`)
+                .setColor(conf.mauvais)
+
+                return interaction.reply({ embeds: [existeEmbed] , ephemeral: true })
+            }
+
+            const entrepriseData = new Entreprise({
+                nom : interaction.options.getString("nom"),
+                type : interaction.options.getString("type"),
+                possesseur : interaction.user.id,
+                nombreDeSalariéMaximum : interaction.options.getString("nombre-de-salarié-maximum"),
+                createdAt : moment(Date.now()).format("DD/MM/YYYY"),
+                couleur : interaction.options.getString("couleur"),
+                logo : interaction.options.getString("logo")
+            })
 
             const créerEmbed = new EmbedBuilder()
             .setDescription(`L'entreprise ${entrepriseData.nom} a été créé avec succès`)
@@ -144,12 +148,17 @@ module.exports = {
         }
 
         if (interaction.options.getSubcommand() === "supprimer") {
+            if (!await Entreprise.findOne({ nom: interaction.options.getString("nom") })) {
+                return interaction.reply({ content: "Cette entreprise n'existe pas", ephemeral: true })
+            }
+            const entrepriseData = await Entreprise.findOne({ nom: interaction.options.getString("nom") })
+            await Entreprise.deleteOne({ nom: interaction.options.getString("nom") })
+            
             const supprimerEmbed = new EmbedBuilder()
             .setDescription(`L'entreprise ${entrepriseData.nom} a été supprimé avec succès`)
             .setColor(conf.accepter)
             .setFooter({text: conf.accepterTxt + "Entreprise supprimé"})
-
-            await Entreprise.deleteOne({ id: entrepriseData.id })
+            
             await interaction.reply({ embeds: [supprimerEmbed] })
         }
 
@@ -170,11 +179,12 @@ module.exports = {
         }
 
         if (interaction.options.getSubcommand() === "afficher") {
+            entrepriseData = await Entreprise.findOne({ nom: interaction.options.getString("nom") })
             const afficherEmbed = new EmbedBuilder()
-            .setTitle(`${entrepriseData.nom}`)
+            .setTitle(`${entrepriseData.nom} + `)
             .setFields(
                 { name: "Patron", value: `${entrepriseData.patron}` },
-                { name: `${entrepriseData.nbEmploye}/${entrepriseData.nbMaxEmploye}${user.nom}`, value: `${entrepriseData.type}` },
+                { name: `${entrepriseData.nbEmploye}/${entrepriseData.nbMaxEmploye}`, value: `${entrepriseData.type}` },
             )
 
             await interaction.reply({ embeds: [afficherEmbed] })    
