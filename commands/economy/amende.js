@@ -1,15 +1,9 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
-<<<<<<< HEAD
 const { EmbedBuilder, ComponentType, ButtonStyle, ButtonBuilder, ActionRowBuilder } = require("discord.js")
 const { moneyFormat } = require("../../handlers/functions.js")
 const { User } = require("../../models/userSchema.js")
 const conf = require("C:/NovaBotJs/config/embed.json")
-=======
-const { EmbedBuilder, Colors, ButtonStyle, ButtonBuilder, ActionRowBuilder, ComponentType } = require("discord.js")
-const { User } = require("/workspace/NovaBotJs/utils/schema.js")
-const { v4: uuidv4 } = require('uuid');
-const conf = require("/workspace/NovaBotJs/config/embed.json")
->>>>>>> e1fbe1f4230aeda81d8d5e0289a52b5a163a1337
+
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -76,18 +70,14 @@ module.exports = {
         .addComponents(
             refuser
         )
-<<<<<<< HEAD
 
         await interaction.editReply({embeds: [amendeEmbed], components: [row], fetchReply: true})
-        const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 90000, errors: ['time'] });
-=======
         
         messageArray += message.id
         messageArray.save
 
         await interaction.editReply({embeds: [amendeEmbed], components: [row], fetchReply: true})
         const collector = interaction.channel.createMessageComponentCollector({ componentType: ComponentType.Button, time: 60000, errors: ['time'] });
->>>>>>> e1fbe1f4230aeda81d8d5e0289a52b5a163a1337
         collector.on('collect', async (ButtonInteraction) => {
             if (target.id != ButtonInteraction.user.id) {
                 const wrongUser = new EmbedBuilder()
@@ -95,11 +85,8 @@ module.exports = {
                 .setDescription(`**${user.username}** cette amende ne vous est pas adressée !`)
                 .setFooter({text: conf.non_autoriser})
 
-<<<<<<< HEAD
                 await interaction.followUp({ embeds:[wrongUser], components:[], ephemeral: true })
-=======
                 await interaction.editReply({ embeds:[wrongUser], components:[], ephemeral: true })
->>>>>>> e1fbe1f4230aeda81d8d5e0289a52b5a163a1337
             }
 
             if (ButtonInteraction.customId == message.id + "accepter" && target.id == ButtonInteraction.user.id) {
@@ -108,11 +95,8 @@ module.exports = {
                 const accepterEmbed = new EmbedBuilder()
                 .setColor(conf.accepter)
                 .setDescription(`**${user.username}** vous avez payé une amende de **${formatter.format(amount)}** à **${target.username}**`)
-<<<<<<< HEAD
                 .setFooter({text: conf.transactionAccepter})
-=======
                 .setFooter({text: "✅"})
->>>>>>> e1fbe1f4230aeda81d8d5e0289a52b5a163a1337
                 targetData.Cash -= amount
                 targetData.save()
                 
