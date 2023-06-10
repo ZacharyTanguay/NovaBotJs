@@ -6,13 +6,13 @@ const {
   Embed,
 } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { moneyFormat } = require("/workspace/NovaBotJs/Handlers/functions.js");
-const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json");
-const { User } = require("/workspace/NovaBotJs/Database/userSchema.js");
-const { Citoyen } = require("/workspace/NovaBotJs/Database/citoyenSchema.js");
+const { moneyFormat } = require("../../handlers/functions.js")
+const myVar = require("../../BotJson/myVar.json");
+//const { User } = require("../../Database/userSchema.js");
+const { Citoyen } = require("../../Database/citoyenSchema.js");
 const {
   Entreprise,
-} = require("/workspace/NovaBotJs/Database/entrepriseSchema.js");
+} = require("../../Database/entrepriseSchema.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -78,7 +78,7 @@ module.exports = {
             )
         )
     ),
-  run: async (interaction) => {
+  async execute (interaction) {
     if (interaction.options.getSubcommand() === "créer") {
       const user = interaction.options.getUser("utilisateur");
 

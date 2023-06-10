@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const myVar = require("/workspace/NovaBotJs/BotJson/myVar.json")
+const myVar = require("../BotJson/myVar.json")
 
 const User = new mongoose.Schema({
     joinedAt: { type: Date, default: "" },
