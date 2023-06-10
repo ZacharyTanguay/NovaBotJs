@@ -19,7 +19,7 @@ module.exports = {
         .setName("user")
         .setDescription("utilisateur dont l'argent doit être regardé")
     ),
-    run: async (interaction, client, message) => {
+    async execute (interaction) {
         const user = interaction.options.getUser("user") || interaction.member.user
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id })
 

@@ -18,7 +18,7 @@ module.exports = {
         .setRequired(true)
         .setMinValue(5)
     ),
-    run: async (interaction) => {
+    async execute (interaction) {
         const user = interaction.member.user,
         amount = interaction.options.getNumber("montant")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),

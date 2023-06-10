@@ -115,7 +115,7 @@ module.exports = {
         .setName("liste")
         .setDescription("Affiche la liste des entreprises")
     ),
-    run: async (interaction) => {
+    async execute (interaction) {
         const user = interaction.member.user
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id })
         

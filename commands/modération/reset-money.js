@@ -12,7 +12,7 @@ module.exports = {
         .setDescription("utilisateur à qui vous voulez reset le compte bancaire")
         .setRequired(true)
     ),
-    run: async (interaction) => {
+    async execute (interaction) {
         const user = interaction.member.user
         const target = interaction.options.getUser("user")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),

@@ -12,10 +12,10 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName("porte-feuille")
     .setDescription("ouvre ton porte-feuille"),
-    run: async (interaction, client, message) => {
+    async execute (interaction) {
         const canvas = Canvas.createCanvas(798, 522);
 		const context = canvas.getContext('2d');
-        const background = await Canvas.loadImage('C:/NovaBotJs/images/cash1.png');
+        const background = await Canvas.loadImage('C:/NovaBotJs/images/cash3.png');
         context.drawImage(background, 0, 0 , canvas.width, canvas.height);
         
         const attachment = new AttachmentBuilder(await canvas.encode('png'), { name: 'profile-image.png' });

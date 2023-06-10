@@ -25,7 +25,7 @@ module.exports = {
         .setRequired(true)
         .setMinValue(1)
     ),
-    run: async (interaction) => {
+    async execute (interaction) {
         const user = interaction.member.user
         const target = interaction.options.getUser("user")
         amount = interaction.options.getNumber("montant")

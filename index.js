@@ -1,5 +1,7 @@
 ﻿const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { bot_token, mongo_url } = require('./config.json');
+const fs = require('node:fs');
+const path = require('node:path');
 const {loadEvents} = require("./handlers/eventHandler");
 const {loadCommands} = require("./handlers/commandHandler");
 

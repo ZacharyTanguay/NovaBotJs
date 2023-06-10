@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, ComponentType, ButtonStyle, ButtonBuilder, ActionRowBuilder } = require("discord.js")
+const { execute } = require("../../events/interactions/interactionCreate.js")
 const { moneyFormat } = require("../../handlers/functions.js")
 const { User } = require("../../models/userSchema.js")
 const conf = require("C:/NovaBotJs/config/embed.json")
@@ -32,7 +33,7 @@ module.exports = {
         .setDescription("La raison de l'amende")
         .setRequired(true)
     ),
-    run: async (interaction) => {
+    async execute (interaction) {
         const user = interaction.member.user
         const target = interaction.options.getUser("utilisateur")
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),

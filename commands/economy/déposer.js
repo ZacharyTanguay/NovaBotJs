@@ -36,7 +36,7 @@ module.exports = {
         .setName("tout")
         .setDescription("déposer tout votre argent cash*")
     ),
-    run: async (interaction) => {
+    async execute (interaction) {
         const user = interaction.member.user,
         amount = interaction.options.getNumber("espèces"),
         userData = await User.findOne({ id: user.id }) || new User({ id: user.id }),

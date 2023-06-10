@@ -1,0 +1,22 @@
+const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder, Embed } = require('discord.js')
+const { SlashCommandBuilder } = require('@discordjs/builders')
+const { moneyFormat } = require("../../handlers/functions.js")
+const myVar = require('BotJson/myVar.json')
+const User = require('Database/userSchema.js')
+const Citoyen = require('Database/citoyenSchema.js')
+const Entreprise = require('Database/entrepriseSchema.js')
+
+module.exports = {
+    data: new SlashCommandBuilder()
+    .setName("here")
+    .setDescription("Aucune"),
+    run: async (interaction) => {
+        const embed = new EmbedBuilder ()
+        .setColor(myVar.color_server)
+        .setDescription(`Cette commande est en cours de développement!`)
+
+        return interaction.reply({
+            embeds: [ embed ]
+        })
+    }
+}

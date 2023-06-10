@@ -30,7 +30,7 @@ module.exports = {
         .setDescription("raison de la facture")
         .setRequired(true)
     ),
-    run: async (interaction, client, message) => {
+    async execute (interaction) {
         const user = interaction.member.user
         const target = interaction.options.getUser("user")
         amount = interaction.options.getNumber("montant")

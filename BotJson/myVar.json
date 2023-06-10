@@ -1,0 +1,36 @@
+{
+    "color_server" : "#cfb35f",
+    "color_valid": "#1F8B4C",
+    "color_deny": "#992D22",
+    "color_warning": "#FFFF00",
+    "color_error": "#ED4245",
+
+    "emoji_server": "<:logo:1037475703991578745> ",
+    "emoji_valid" : "<:validation:1033078689824510053> ",
+    "emoji_deny" : "<:error:1033909693720055898> ",
+    "emoji_warning" : "⚠️ ",
+    "emoji_permis-valid" : "🟢 ",
+    "emoji_permis-deny" : "🔴 ",
+    "emoji_liquide": "💵 ",
+    "emoji_credit": "💳 ",
+    "emoji_total": "💰 ",
+    "emoji_crypto": "🪙 ",
+    "emoji_carte-identite": "🪪 ",
+
+    "separator_server": "〣 ",
+    "separator_line": "| ",
+    "separator_point-petit": "• ",
+    "separartor_point-grand": "● ",
+    "separator_point-vide": "○ ",
+    "separator_carré-petit": "▪︎ ",
+    "separator_carré-grand": "■ ",
+    "separator_carré-vide": "□ ",
+    "separator_etoile": "☆ ",
+    "separator_losange": "◇ ",
+    "separator_viseur": "¤ ",
+    "separator_degré": "° ",
+    
+    "symbol_money": "$ ",
+    "symbol_crypto": "$ "
+    
+ }
