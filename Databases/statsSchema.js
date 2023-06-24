@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const myVar = require("../BotJson/myVar.json")
 
-const { moneyFormat } = require("./Handlers/functions.js")
+const { moneyFormat } = require("./Handlers/functions.js.js")
 
 const Statistiques = new mongoose.Schema({
     stats_nbUser: { type: Number, default : 0 },

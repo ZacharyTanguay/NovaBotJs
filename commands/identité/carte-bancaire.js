@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder } = require("discord.js")
-const { User } = require("../../models/userSchema.js")
+const { User } = require("../../Database/Schema/user.js")
 const Canvas = require('@napi-rs/canvas');
 
 var formatter = new Intl.NumberFormat('en-US', {
@@ -53,11 +53,11 @@ module.exports = {
         .setAuthor({name: user.tag, iconURL: user.displayAvatarURL()})
         .setColor("#E67E22")
         .setImage("attachment://profile-image.png")
+        await interaction.reply({ embeds: [embedCarteBancaire] ,files: [attachment] })
 
-        if (userData.carteIdentité == true) {
-            await interaction.reply({ embeds: [embedCarteBancaire] ,files: [attachment] })
-        } else {
-            await interaction.reply("vous n'avez pas de carte d'identité")
-        }
+        // if (userData.carteIdentité == true) {
+        // } else {
+        //     await interaction.reply("vous n'avez pas de carte d'identité")
+        // }
     }
 }

@@ -5,17 +5,10 @@ const path = require('node:path');
 const {loadEvents} = require("./handlers/eventHandler");
 const {loadCommands} = require("./handlers/commandHandler");
 
+//const { loadButtons } = require('./events/interactions/interactionCreate');
 const mongoose = require('mongoose');
-const { loadButtons } = require('./events/interactions/interactionCreate');
-const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.GuildPresences,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildMessageReactions,
-  ],
-});
+const Sequelize = require('sequelize');
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
 client.events = new Collection();

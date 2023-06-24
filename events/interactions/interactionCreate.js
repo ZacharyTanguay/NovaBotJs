@@ -2,7 +2,7 @@ const { Events } = require('discord.js');
 
 module.exports = {
 	name: Events.InteractionCreate,
-	async execute(interaction) {
+	async execute(interaction, client) {
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);
@@ -12,8 +12,13 @@ module.exports = {
 			return;
 		}
 
+		if (interaction.isModalSubmit()) {
+			const modalInteraction = client.modalForms.get(interaction.customId);
+			if (!modalInteraction) return;
+		}
+
 		try {
-			await command.execute(interaction);
+			await command.execute(interaction, client);
 		} catch (error) {
 			console.error(`Error executing ${interaction.commandName}`);
 			console.error(error);
@@ -22,7 +27,7 @@ module.exports = {
 };
 
 // const {CommandInteraction, ButtonStyle, ButtonBuilder, ActionRowBuilder} = require("discord.js");
-// const { User } = require("../../models/userSchema.js")
+// const { User } = require("../../Database/Schema/user.js")
 
 // module.exports = {
 //   name: "interactionCreate",

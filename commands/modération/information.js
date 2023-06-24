@@ -6,13 +6,13 @@ const {
   Embed,
 } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { moneyFormat } = require("../../handlers/functions.js")
+const { moneyFormat } = require("../../utils/functions.js")
 const myVar = require("../../BotJson/myVar.json");
 //const { User } = require("../../Database/userSchema.js");
-const { Citoyen } = require("../../Database/citoyenSchema.js");
+const { Citoyen } = require("../../Databases/citoyenSchema.js");
 const {
   Entreprise,
-} = require("../../Database/entrepriseSchema.js");
+} = require("../../Databases/entrepriseSchema.js");
 
 module.exports = {
   data: new SlashCommandBuilder()

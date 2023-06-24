@@ -1,9 +1,9 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, ComponentType, ButtonStyle, ButtonBuilder, ActionRowBuilder } = require("discord.js")
-const { execute } = require("../../events/interactions/interactionCreate.js")
-const { moneyFormat } = require("../../handlers/functions.js")
-const { User } = require("../../models/userSchema.js")
-const conf = require("C:/NovaBotJs/config/embed.json")
+const { execute } = require("../../Events/Interactions/interactionCreate.js")
+const { moneyFormat } = require("../../utils/functions.js")
+const { User } = require("../../Database/Schema/user.js")
+const conf = require("../../BotJson/embed.json")
 
 
 var formatter = new Intl.NumberFormat('en-US', {

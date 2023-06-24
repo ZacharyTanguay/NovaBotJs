@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder, Embed } = require("discord.js")
-const { User } = require("../../models/userSchema.js")
+const { User } = require("../../Database/Schema/user.js")
 const Canvas = require('@napi-rs/canvas');
 const { request } = require('undici');
 
@@ -129,7 +129,6 @@ module.exports = {
 
         if (interaction.options.getSubcommand() === "afficher") {
             const applyText = (canvas, text) => {
-                const user = interaction.options.getUser("user")
                 const context = canvas.getContext('2d');
             
                 // Declare a base size of the font
@@ -169,12 +168,13 @@ module.exports = {
             .setAuthor({name: interaction.user.tag, iconURL: interaction.user.displayAvatarURL()})
             .setColor("#E67E22")
             .setImage("attachment://profile-image.png")
+            await interaction.reply({embeds: [embedAfficherIdentite], files: [attachment] })
 
-            if (userData.carteIdentité == true) {
-                await interaction.reply({embeds: [embedAfficherIdentite], files: [attachment] })
-            } else {
-                await interaction.reply("vous n'avez pas de carte d'identité")
-            }
+            // if (userData.carteIdentité == true) {
+            //     await interaction.reply({embeds: [embedAfficherIdentite], files: [attachment] })
+            // } else {
+            //     await interaction.reply("vous n'avez pas de carte d'identité")
+            // }
         }
     }
 }

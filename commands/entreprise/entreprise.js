@@ -1,8 +1,8 @@
 const { SlashCommandBuilder, TimestampStyles } = require("@discordjs/builders")
 const { Client, GatewayIntentBits, AttachmentBuilder, EmbedBuilder, Embed } = require("discord.js")
-const { User } = require("C:/NovaBotJs/models/userSchema.js")
-const { Entreprise} = require("C:/NovaBotJs/models/entrepriseSchema.js")
-const conf = require("C:/NovaBotJs/config/embed.json")
+const { User } = require("../../Database/Schema/user.js")
+const { Entreprise} = require("../../Database/Schema/entreprise.js")
+const conf = require("../../BotJson/embed.json")
 const { v4: uuidv4 } = require('uuid');
 const moment = require('moment');
 

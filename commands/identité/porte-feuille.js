@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder, Colors, ButtonStyle, ButtonBuilder, ActionRowBuilder, ComponentType, AttachmentBuilder } = require("discord.js")
-const { User } = require("../../models/userSchema.js")
+const { User } = require("../../Database/Schema/user.js")
 const Canvas = require('@napi-rs/canvas');
 
 var formatter = new Intl.NumberFormat('en-US', {
