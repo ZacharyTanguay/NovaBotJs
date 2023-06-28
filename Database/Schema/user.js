@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const myVar = require("../../BotJson/myVar.json")
 
 const userSchema = new mongoose.Schema({
     id: { type: String, unique: true, required: true},
